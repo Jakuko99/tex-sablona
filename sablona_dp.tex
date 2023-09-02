@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage{mathptmx}
+\usepackage{tocloft}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage[framemethod=tikz]{mdframed}
+%\usepackage[slovak]{babel} % síce opraví ď a ť, ale premenuje niektoré menovky na zlé hodnoty, ktoré ale renewcommand neopraví naspäť
+
+\parskip=5pt plus 1pt % medzera medzi odsekmi
+\renewcommand{\baselinestretch}{1.25} % riadkovanie
+\geometry{
+	a4paper,
+	left=3.5cm,
+	right=2.5cm,
+	top=2.5cm,
+	bottom=2.5cm
+} % nastavenie okrajov strany
+
+% ----- konfigurácia pomenovania zoznamov a popisov -----
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % bodky v obsahu
+\renewcommand{\contentsname}{Obsah} % premenovanie zoznamov do slovenčiny
+\renewcommand{\listfigurename}{Zoznam obrázkov}
+\renewcommand{\listtablename}{Zoznam tabuliek}
+\renewcommand{\refname}{Zoznam použitej literatúry}
+\renewcommand{\figurename}{\textbf{Obr.}} % úprava popisov pre obrázky
+\renewcommand{\thefigure}{\textbf{\arabic{figure}}}
+%\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %štrukturované značenie obrázkov (nefunguje správne)
+\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
+\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky
+
+% ----- vytvorenie zoznamu pre prílohy -----
+\newcommand{\listexamplename}{Zoznam príloh}
+\newlistof{example}{exp}{\listexamplename}
+\newcounter{examplealph}
+\newcommand{\example}[1]{%
+	\refstepcounter{examplealph}
+	\par\noindent\section*{Príloha \Alph{examplealph}: #1}
+	\addcontentsline{exp}{example}
+	{\protect\numberline{\Alph{examplealph}}#1}\par}
+\renewcommand{\theexamplealph}{\Alph{examplealph}}
+
+\graphicspath{{images/}} % priečinok kde sú uložené obrázky
+
+\begin{document}
+\input{titulna_strana} % vloženie súboru s titulnou stranou, takto je možné pridávať súbory ktoré obsahujú časti práce
+
+\input{uvodne_strany} % vloženie úvodných strán
+
+\newpage % obsah, zoznam obrázkov a tabuliek
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\thispagestyle{empty}
+\listoffigures
+\newpage
+\thispagestyle{empty}
+\listoftables
+
+\input{skratky_symboly} % vloženie zoznami skratiek a symbolov
+
+% obsahová časť práce začínajúca s úvodom
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{10} % zapnutie číslovania strán od hodnoty 10
+\addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
+\section*{Úvod} % sekcia bez čísla
+\hspace{1.25cm}Postea voluptua quo cu, paulo oportere mea et. Alia equidem id eam, diam oratio phaedrum sit ex. Sea in soluta saperet corrumpit, et sea nullam legendos. Ad abhorreant deseruisse adipiscing per, ei pro idque maiorum mentitum. Has ei porro doctus inimicus. Mea ea postea alterum torquatos, sit cu idque movet reprimique, ex agam indoctum incorrupte mel.
+Cum ad rationibus disputando necessitatibus, vel eu bonorum utroque menandri. His an falli democritum intellegam. Maluisset torquatos sit in. Possit mnesarchum efficiendi pro ut. Erat justo molestie ea quo, in vim atqui atomorum abhorreant.~\cite{modernrob}
+
+Práca bola napísaná pomocou použitia \LaTeX, čo je nástroj na písanie profesionálne vyzerajúcich dokumentov pomocou používania príkazov v textovom dokumente, ktoré tvoria s pomocou \TeX \ engine výsledný dokument.
+
+\newpage
+\section{Úvod do problematiky}
+kapitola 1
+\begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
+\centering
+\includegraphics{logo}
+\caption{obrázok}
+\label{img:obrazok}
+\end{figure}
+\subsection{podkapitola}
+\begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
+\centering
+\includegraphics{logo}
+\caption{ob}
+\label{img:ob}
+\end{figure}
+\subsubsection{pod-podkapitola}
+\begin{table}[H]
+	\centering
+	\caption{tabulka}
+	\label{tab:my-table}
+	\begin{tabular}{|l|l|}
+\hline
+1 & 3 \\ \hline
+4 & 2 \\ \hline
+	\end{tabular}	
+	\end{table}
+\section{Teoretické poznatky}
+\begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
+\centering
+\includegraphics{logo}
+\caption{test}
+\label{img:test}
+\end{figure}
+
+% hlavná obsahová časť práce
+
+\newpage % záver
+\addcontentsline{toc}{section}{Záver}
+\section*{Záver}
+text záveru
+
+\newpage % zoznam použitej literatúry
+\addcontentsline{toc}{section}{Zoznam použitej literatúry}
+\bibliographystyle{ieeetr}
+\bibliography{sablona_dp}
+
+\newpage % začiatok príloh
+\topskip0pt
+\vspace*{\fill}
+\addcontentsline{toc}{section}{Prílohy}
+\begin{centering} \section*{Prílohy} \end{centering}
+\vspace*{\fill}
+
+\newpage % zoznam príloh
+\listofexample
+
+\newpage
+\example{Príklad prílohy}
+\end{document}
