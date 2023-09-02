@@ -1,12 +1,15 @@
 \documentclass[12pt]{article}
 \usepackage{mathptmx}
 \usepackage{tocloft}
+\usepackage{tocbasic}
 \usepackage{tabularx}
 \usepackage{lipsum}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{float}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{caption}% http://ctan.org/pkg/caption
+\captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 %\usepackage[slovak]{babel} % síce opraví ď a ť, ale premenuje niektoré menovky na zlé hodnoty, ktoré ale renewcommand neopraví naspäť
 
 \parskip=5pt plus 1pt % medzera medzi odsekmi
@@ -22,6 +25,17 @@
 % ----- konfigurácia pomenovania zoznamov a popisov -----
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % bodky v obsahu
 \renewcommand{\contentsname}{Obsah} % premenovanie zoznamov do slovenčiny
+\newcommand\entrynumberwithprefix[2]{#1\enspace#2:\hfill}
+\DeclareTOCStyleEntry[ % pridanie obr. pred názov obrázku do zoznamu obrázkov
+entrynumberformat=\entrynumberwithprefix{\figurename},
+dynnumwidth,
+numsep=1em
+]{tocline}{figure}
+\DeclareTOCStyleEntry[ % pridanie tab. pred názov tabuľky
+entrynumberformat=\entrynumberwithprefix{\tablename},
+dynnumwidth,
+numsep=1em
+]{tocline}{table}
 \renewcommand{\listfigurename}{Zoznam obrázkov}
 \renewcommand{\listtablename}{Zoznam tabuliek}
 \renewcommand{\refname}{Zoznam použitej literatúry}
@@ -39,7 +53,7 @@
 	\refstepcounter{examplealph}
 	\par\noindent\section*{Príloha \Alph{examplealph}: #1}
 	\addcontentsline{exp}{example}
-	{\protect\numberline{\Alph{examplealph}}#1}\par}
+	{\textbf{Príloha \protect\numberline{\Alph{examplealph}}}#1}\par}
 \renewcommand{\theexamplealph}{\Alph{examplealph}}
 
 \graphicspath{{images/}} % priečinok kde sú uložené obrázky
