@@ -1,0 +1,1 @@
+# Šablóna pre záverečnú prácu s použitím LaTex
