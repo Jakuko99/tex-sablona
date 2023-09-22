@@ -8,12 +8,12 @@
 \usepackage{geometry}
 \usepackage{float}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{ragged2e}
 \usepackage{caption}% http://ctan.org/pkg/caption
 \captionsetup[table]{labelsep=space} % odstránenie dvojbodky z označenia
 \captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 \captionsetup[figure]{labelsep=space}
 
-%\usepackage{hyperref}
 \usepackage[slovak]{babel} % síce opraví ď a ť, ale premenuje niektoré menovky na zlé hodnoty, ktoré ale renewcommand neopraví naspäť
 
 \parskip=5pt plus 1pt % medzera medzi odsekmi
@@ -22,8 +22,9 @@
 	a4paper,
 	left=3.5cm,
 	right=2.5cm,
-	top=2.5cm,
-	bottom=2.5cm
+	top=1.25cm,
+	bottom=1.25cm,
+	headheight=0.5cm,
 } % nastavenie okrajov strany
 
 % ----- konfigurácia pomenovania zoznamov a popisov -----
@@ -111,11 +112,11 @@ Príklad tabuľky
 	\caption{tabulka}
 	\label{tab:my-table}
 	\begin{tabular}{|l|l|}
-\hline
-1 & 3 \\ \hline
-4 & 2 \\ \hline
+		\hline
+		1 & 3 \\ \hline
+		4 & 2 \\ \hline
 	\end{tabular}	
-	\end{table}
+\end{table}
 \section{Teoretické poznatky}
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
 \centering
