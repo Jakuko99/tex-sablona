@@ -11,7 +11,7 @@
 \usepackage{caption}% http://ctan.org/pkg/caption
 \captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 %\usepackage{hyperref}
-%\usepackage[slovak]{babel} % síce opraví ď a ť, ale premenuje niektoré menovky na zlé hodnoty, ktoré ale renewcommand neopraví naspäť
+\usepackage[slovak]{babel} % síce opraví ď a ť, ale premenuje niektoré menovky na zlé hodnoty, ktoré ale renewcommand neopraví naspäť
 
 \parskip=5pt plus 1pt % medzera medzi odsekmi
 \renewcommand{\baselinestretch}{1.25} % riadkovanie
@@ -24,8 +24,10 @@
 } % nastavenie okrajov strany
 
 % ----- konfigurácia pomenovania zoznamov a popisov -----
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % bodky v obsahu
-\renewcommand{\contentsname}{Obsah} % premenovanie zoznamov do slovenčiny
+\addto\captionsslovak{
+	\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % bodky v obsahu
+	\renewcommand{\contentsname}{Obsah} % premenovanie zoznamov do slovenčiny
+}
 \newcommand\entrynumberwithprefix[2]{#1\enspace#2:\hfill}
 \DeclareTOCStyleEntry[ % pridanie obr. pred názov obrázku do zoznamu obrázkov
 entrynumberformat=\entrynumberwithprefix{\figurename},
@@ -37,15 +39,18 @@ entrynumberformat=\entrynumberwithprefix{\tablename},
 dynnumwidth,
 numsep=1em
 ]{tocline}{table}
-\renewcommand{\listfigurename}{Zoznam obrázkov}
-\renewcommand{\listtablename}{Zoznam tabuliek}
-\renewcommand{\refname}{Zoznam použitej literatúry}
-\renewcommand{\figurename}{\textbf{Obr.}} % úprava popisov pre obrázky
-\renewcommand{\thefigure}{\textbf{\arabic{figure}}}
+\addto\captionsslovak{
+	\renewcommand{\listfigurename}{Zoznam obrázkov}
+	\renewcommand{\listtablename}{Zoznam tabuliek}
+	\renewcommand{\refname}{Zoznam použitej literatúry}
+	\renewcommand{\figurename}{\textbf{Obr.}} % úprava popisov pre obrázky
+	\renewcommand{\thefigure}{\textbf{\arabic{figure}}}
+}
 %\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %štrukturované značenie obrázkov (nefunguje správne)
-\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
-\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky
-
+\addto\captionsslovak{
+	\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
+	\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky	
+}
 % ----- vytvorenie zoznamu pre prílohy -----
 \newcommand{\listexamplename}{Zoznam príloh}
 \newlistof{example}{exp}{\listexamplename}
