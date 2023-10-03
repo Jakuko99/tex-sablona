@@ -9,7 +9,7 @@
 \usepackage{float}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{ragged2e}
-\usepackage{caption}% http://ctan.org/pkg/caption
+\usepackage{caption}
 \captionsetup[table]{labelsep=space} % odstránenie dvojbodky z označenia
 \captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 \captionsetup[figure]{labelsep=space}
@@ -54,7 +54,7 @@ numsep=1em
 \addto\captionsslovak{
 	\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
 }
-\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky	
+\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky
 % ----- vytvorenie zoznamu pre prílohy -----
 \newcommand{\listexamplename}{Zoznam príloh}
 \newlistof{example}{exp}{\listexamplename}
@@ -104,7 +104,7 @@ Príklad obrázku, test slovenskej diakritiky (mäkčene a dĺžne by mali byť 
 \label{img:obrazok}
 \end{figure}
 \subsection{podkapitola}
-Podkapitola v dokumente, citovanie vyzerá takto \cite{modernrob}.
+Podkapitola v dokumente, citovanie vyzerá takto \cite{modernrob}, odkázanie sa na obrázok \ref{img:obrazok}
 \subsubsection{Pod-podkapitola}
 Príklad tabuľky
 \begin{table}[H]
@@ -115,7 +115,7 @@ Príklad tabuľky
 		\hline
 		1 & 3 \\ \hline
 		4 & 2 \\ \hline
-	\end{tabular}	
+	\end{tabular}
 \end{table}
 \section{Teoretické poznatky}
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
