@@ -9,10 +9,13 @@
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{ragged2e}
 \usepackage{caption}
+\usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{todonotes}
+\usepackage{indentfirst} % odsadenie prvého riadku v odseku
+\usepackage[slovak]{babel}
 
 % nastavenie typu písma
-%\usepackage{mathptmx} % times new roman font
 \usepackage{helvet} % arial font
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -32,8 +35,6 @@
 \captionsetup[table]{labelsep=space} % odstránenie dvojbodky z označenia
 \captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 \captionsetup[figure]{labelsep=space}
-
-\usepackage[slovak]{babel}
 
 \parskip=5pt plus 1pt % medzera medzi odsekmi
 \renewcommand{\baselinestretch}{1.25} % riadkovanie
@@ -90,7 +91,12 @@ numsep=1em
 \graphicspath{{images/}} % priečinok kde sú uložené obrázky
 
 \begin{document}
+% volitelna strana na todo zoznam
+\listoftodos % list na todo
+\pagebreak
+
 \input{titulna_strana} % vloženie súboru s titulnou stranou, takto je možné pridávať súbory ktoré obsahujú časti práce
+%\input{titulna_strana_projekt}
 
 \input{uvodne_strany} % vloženie úvodných strán
 
@@ -105,6 +111,7 @@ numsep=1em
 
 % obsahová časť práce začínajúca s úvodom
 \newpage
+\pagestyle{fancy}
 \pagenumbering{arabic}
 \setcounter{page}{1} % zapnutie číslovania strán od hodnoty 10
 \addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
@@ -159,7 +166,7 @@ text záveru
 \topskip0pt
 \vspace*{\fill}
 \addcontentsline{toc}{section}{Prílohy}
-\begin{centering} \section*{Prílohy} \end{centering}
+\begin{center} \section*{Prílohy} \end{center}
 \vspace*{\fill}
 
 \newpage % zoznam príloh
