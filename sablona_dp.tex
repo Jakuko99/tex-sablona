@@ -11,7 +11,6 @@
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
-\usepackage{todonotes}
 \usepackage{indentfirst} % odsadenie prvého riadku v odseku
 \usepackage[slovak]{babel}
 
@@ -91,10 +90,6 @@ numsep=1em
 \graphicspath{{images/}} % priečinok kde sú uložené obrázky
 
 \begin{document}
-% volitelna strana na todo zoznam
-\listoftodos % list na todo
-\pagebreak
-
 \input{titulna_strana} % vloženie súboru s titulnou stranou, takto je možné pridávať súbory ktoré obsahujú časti práce
 %\input{titulna_strana_projekt}
 
@@ -116,7 +111,7 @@ numsep=1em
 \setcounter{page}{1} % zapnutie číslovania strán od hodnoty 10
 \addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
 \section*{Úvod} % sekcia bez čísla
-\hspace{1.25cm}Text úvodu ide sem.
+Text úvodu ide sem.
 
 \newpage
 \section{Úvod do problematiky}
@@ -124,7 +119,7 @@ Príklad obrázku, test slovenskej diakritiky (mäkčene a dĺžne by mali byť 
 \textbf{ľ Ľ ĺ Ĺ š Š č Č ť Ť ž Ž ň Ň ď Ď ý Ý á Á í Í é É ú Ú ä Ä ô Ô ó Ó}
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
 \centering
-\includegraphics{logo}
+\includegraphics{logo.jpg}
 \caption{obrázok}
 \label{img:obrazok}
 \end{figure}
@@ -163,7 +158,6 @@ text záveru
 \bibliography{sablona_dp}
 
 \newpage % začiatok príloh
-\topskip0pt
 \vspace*{\fill}
 \addcontentsline{toc}{section}{Prílohy}
 \begin{center} \section*{Prílohy} \end{center}
