@@ -13,6 +13,7 @@
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{todonotes}
 \usepackage{indentfirst} % odsadenie prvého riadku v odseku
 \usepackage{pdfpages}
 \usepackage{moreverb}
@@ -20,6 +21,7 @@
 \usepackage[slovak]{babel}
 
 % nastavenie typu písma
+%\usepackage{mathptmx} % times new roman font
 \usepackage{helvet} % arial font
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -41,7 +43,7 @@
 \captionsetup[figure]{labelsep=space}
 
 \parskip=5pt plus 1pt % medzera medzi odsekmi
-\renewcommand{\baselinestretch}{1.25} % riadkovanie
+\renewcommand{\baselinestretch}{1.5} % riadkovanie
 \geometry{
 	a4paper,
 	left=3.5cm,
@@ -73,18 +75,18 @@ numsep=1em
 	\renewcommand{\listfigurename}{Zoznam obrázkov}
 	\renewcommand{\listtablename}{Zoznam tabuliek}
 	\renewcommand{\refname}{Zoznam použitej literatúry}
-	\renewcommand{\figurename}{\textbf{Obr.}} % úprava popisov pre obrázky
-	\counterwithin{figure}{section}  % štruktúrované číslovanie obrázkov
+	\renewcommand{\figurename}{Obr.} % úprava popisov pre obrázky
+	\counterwithin{figure}{section} % štrukturované číslovanie obrázkov
 }
-\renewcommand{\thefigure}{\textbf{\arabic{figure}}}
+\renewcommand{\thefigure}{\arabic{figure}}
 %\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %štrukturované značenie obrázkov (nefunguje správne)
 \addto\captionsslovak{
-	\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
+	\renewcommand{\tablename}{Tab.} % zmena popisu tabuľky
 	\counterwithin{table}{section}
 }
-\renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky
+\renewcommand{\thetable}{\arabic{table}} % tučné písmo aj pre číslo tabuľky
 % ----- vytvorenie zoznamu pre prílohy -----
-\newcommand{\listexamplename}{Zoznam príloh}
+\newcommand{\listexamplename}{\Large Zoznam príloh}
 \newlistof{example}{exp}{\listexamplename}
 \newcounter{examplealph}
 \newcommand{\example}[1]{%
@@ -97,7 +99,9 @@ numsep=1em
 \graphicspath{{images/}} % priečinok kde sú uložené obrázky
 
 \begin{document}
-\input{titulna_strana} % vloženie súboru s titulnou stranou, takto je možné pridávať súbory ktoré obsahujú časti práce
+%\listoftodos % list na todo
+%\pagebreak
+\input{titulna_strana} % titulna strana na záverečnú prácu
 %\input{titulna_strana_projekt}
 
 \input{uvodne_strany} % vloženie úvodných strán
