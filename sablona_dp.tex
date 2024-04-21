@@ -74,11 +74,13 @@ numsep=1em
 	\renewcommand{\listtablename}{Zoznam tabuliek}
 	\renewcommand{\refname}{Zoznam použitej literatúry}
 	\renewcommand{\figurename}{\textbf{Obr.}} % úprava popisov pre obrázky
+	\counterwithin{figure}{section}  % štruktúrované číslovanie obrázkov
 }
 \renewcommand{\thefigure}{\textbf{\arabic{figure}}}
 %\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %štrukturované značenie obrázkov (nefunguje správne)
 \addto\captionsslovak{
 	\renewcommand{\tablename}{\textbf{Tab.}} % zmena popisu tabuľky
+	\counterwithin{table}{section}
 }
 \renewcommand{\thetable}{\textbf{\arabic{table}}} % tučné písmo aj pre číslo tabuľky
 % ----- vytvorenie zoznamu pre prílohy -----
