@@ -1,5 +1,5 @@
-\documentclass[12pt]{article}
-\usepackage[T1]{fontenc} % kopírovanie textu s pdf v správnom formáte
+\documentclass[12]{article}
+\usepackage[T1]{fontenc}
 \usepackage{tocloft}
 \usepackage{tocbasic}
 \usepackage{tabularx}
@@ -79,12 +79,13 @@ numsep=1em
 	\counterwithin{figure}{section} % štrukturované číslovanie obrázkov
 }
 \renewcommand{\thefigure}{\arabic{figure}}
-%\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %štrukturované značenie obrázkov (nefunguje správne)
+
 \addto\captionsslovak{
 	\renewcommand{\tablename}{Tab.} % zmena popisu tabuľky
 	\counterwithin{table}{section}
+	\counterwithin{equation}{section}
 }
-\renewcommand{\thetable}{\arabic{table}} % tučné písmo aj pre číslo tabuľky
+\renewcommand{\thetable}{\arabic{table}}
 % ----- vytvorenie zoznamu pre prílohy -----
 \newcommand{\listexamplename}{\Large Zoznam príloh}
 \newlistof{example}{exp}{\listexamplename}
