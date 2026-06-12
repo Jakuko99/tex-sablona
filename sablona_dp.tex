@@ -1,50 +1,54 @@
+% (c) 2023 Ing. Jakub Krško, FEIT, UNIZA
+% https://github.com/jakuko99/tex-sablona/issues
+
 \documentclass[12]{article}
+% ----- balíčky použité v dokumente -----
 \usepackage[T1]{fontenc}
 \usepackage{tocloft}
 \usepackage{tocbasic}
-\usepackage{tabularx}
-\usepackage{lipsum}
+\usepackage{tabularx} % balíček pre tabulky
 \usepackage{graphicx}
 \usepackage{geometry}
-\usepackage{amsmath}
+\usepackage{amsmath} % balíček pre matematické vzorce
 \usepackage{float}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{ragged2e}
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
-\usepackage{todonotes}
+\usepackage{todonotes} % balíček pre poznámky
 \usepackage{indentfirst} % odsadenie prvého riadku v odseku
 \usepackage{pdfpages}
 \usepackage{moreverb}
 \usepackage{subcaption}
-\usepackage{notoccite} % nezoraďovať citácie podľa table of contents
+\usepackage{notoccite} % nezoraďovať citácie podľa obsahu
 \usepackage[slovak]{babel}
 
-% nastavenie typu písma
-%\usepackage{mathptmx} % times new roman font
+% ----- nastavenie typu písma -----
 \usepackage{helvet} % arial font
 \renewcommand{\familydefault}{\sfdefault}
 
-\fancyhf{} % clear all header and footers
-\renewcommand{\headrulewidth}{0pt} % remove the header rule
+% ----- nastavenie hlavičky a päty -----
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
 \rfoot{\thepage}
-
 \fancypagestyle{plain}{
-	\fancyhf{} % clear all header and footer fields
-	\fancyhead{} % clear all header fields
-	\fancyfoot{} % clear all footer fields
+	\fancyhf{}
+	\fancyhead{}
+	\fancyfoot{}
 	\rfoot{\thepage}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
 
-\captionsetup[table]{labelsep=space} % odstránenie dvojbodky z označenia
+% ----- nastavenie popisov obrázkov a tabuliek -----
+\captionsetup[table]{labelsep=space}
 \captionsetup[table]{justification=raggedleft,singlelinecheck=off}
 \captionsetup[figure]{labelsep=space}
 
-\parskip=5pt plus 1pt % medzera medzi odsekmi
-\renewcommand{\baselinestretch}{1.5} % riadkovanie
+% ----- nastavenie okrajov, odsadenia a riadkovania -----
+\parskip=5pt plus 1pt
+\renewcommand{\baselinestretch}{1.5}
 \geometry{
 	a4paper,
 	left=3.5cm,
@@ -54,12 +58,12 @@
 	headheight=0.5cm,
 	includefoot,
 	includehead
-} % nastavenie okrajov strany
+}
 
 % ----- konfigurácia pomenovania zoznamov a popisov -----
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % bodky v obsahu
-\addto\captionsslovak{	% prepísanie makier z babel balíčka na požadovanú hodnotu
-	\renewcommand{\contentsname}{Obsah} % premenovanie zoznamov do slovenčiny
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\addto\captionsslovak{
+	\renewcommand{\contentsname}{Obsah}
 }
 \newcommand\entrynumberwithprefix[2]{#1\enspace#2:\hfill}
 \DeclareTOCStyleEntry[ % pridanie obr. pred názov obrázku do zoznamu obrázkov
@@ -72,21 +76,21 @@ entrynumberformat=\entrynumberwithprefix{\tablename},
 dynnumwidth,
 numsep=1em
 ]{tocline}{table}
+
+% ----- konfigurácia pomenovania zoznamov a popisov -----
 \addto\captionsslovak{
 	\renewcommand{\listfigurename}{Zoznam obrázkov}
 	\renewcommand{\listtablename}{Zoznam tabuliek}
 	\renewcommand{\refname}{Zoznam použitej literatúry}
 	\renewcommand{\figurename}{Obr.} % úprava popisov pre obrázky
 	\counterwithin{figure}{section} % štrukturované číslovanie obrázkov
-}
-\renewcommand{\thefigure}{\arabic{figure}}
-
-\addto\captionsslovak{
 	\renewcommand{\tablename}{Tab.} % zmena popisu tabuľky
 	\counterwithin{table}{section}
 	\counterwithin{equation}{section}
+	\renewcommand{\thefigure}{\arabic{figure}}
+	\renewcommand{\thetable}{\arabic{table}}
 }
-\renewcommand{\thetable}{\arabic{table}}
+
 % ----- vytvorenie zoznamu pre prílohy -----
 \newcommand{\listexamplename}{\Large Zoznam príloh}
 \newlistof{example}{exp}{\listexamplename}
@@ -98,13 +102,15 @@ numsep=1em
 	{\textbf{Príloha \protect\numberline{\Alph{examplealph}}}#1}\par}
 \renewcommand{\theexamplealph}{\Alph{examplealph}}
 
-\graphicspath{{images/}} % priečinok kde sú uložené obrázky
+\graphicspath{{images/}} % priečinok odkiaľ sa načítavajú obrázky
 
+% ----- koniec konfigurácie šablóny -----
 \begin{document}
-%\listoftodos % list na todo
+%\listoftodos % list na úlohy (poznámky)
 %\pagebreak
+
 \input{titulna_strana} % titulna strana na záverečnú prácu
-%\input{titulna_strana_projekt}
+%\input{titulna_strana_projekt} % titulna strana na projekt
 
 \input{uvodne_strany} % vloženie úvodných strán
 
@@ -115,9 +121,9 @@ numsep=1em
 \newpage
 \listoftables
 
-\input{skratky_symboly} % vloženie zoznami skratiek a symbolov
+\input{skratky_symboly} % vloženie zoznamu skratiek a symbolov
 
-% obsahová časť práce začínajúca s úvodom
+% obsahová časť práce začínajúca od úvodu, číslovanie strán od 1
 \newpage
 \pagestyle{fancy}
 \pagenumbering{arabic}
@@ -128,18 +134,22 @@ Text úvodu ide sem.
 
 \newpage
 \section{Úvod do problematiky}
-Príklad obrázku, test slovenskej diakritiky (mäkčene a dĺžne by mali byť na správnom mieste) \\
-\textbf{ľ Ľ ĺ Ĺ š Š č Č ť Ť ž Ž ň Ň ď Ď ý Ý á Á í Í é É ú Ú ä Ä ô Ô ó Ó}
+Príklad obrázku:
+
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
 \centering
 \includegraphics{logo.jpg}
 \caption{obrázok}
 \label{img:obrazok}
 \end{figure}
+
 \subsection{podkapitola}
+
 Podkapitola v dokumente, citovanie vyzerá takto \cite{modernrob}, odkázanie sa na obrázok \ref{img:obrazok}
+
 \subsubsection{Pod-podkapitola}
-Príklad tabuľky
+Príklad tabuľky:
+
 \begin{table}[H]
 	\centering
 	\caption{tabulka}
@@ -150,20 +160,13 @@ Príklad tabuľky
 		4 & 2 \\ \hline
 	\end{tabular}
 \end{table}
-\section{Teoretické poznatky}
-\begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
-\centering
-\includegraphics{logo}
-\caption{test}
-\label{img:test}
-\end{figure}
 
-% hlavná obsahová časť práce
+\section{Kapitola 2}
 
 \newpage % záver
 \addcontentsline{toc}{section}{Záver}
 \section*{Záver}
-text záveru
+Text záveru \todo{Takto vyzerá poznámka, ktorú je možné umiestniť kamkoľvek do dokumentu.}
 
 \newpage % zoznam použitej literatúry
 \addcontentsline{toc}{section}{Zoznam použitej literatúry}
@@ -181,4 +184,7 @@ text záveru
 
 \newpage
 \example{Príklad prílohy}
+
+\input{priloha_2} % vloženie prílohy z iného súboru
+
 \end{document}
