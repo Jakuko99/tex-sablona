@@ -145,7 +145,12 @@ numsep=1em
 		}
 		\bool_if:NTF \g_uniza_glossary_started_bool
 			{ \glsadd{\l_tmpa_tl} }
-			{ \tl_gput_right:Nn \g_uniza_pending_abbr_tl { \glsadd{\l_tmpa_tl} } }
+			{ \tl_gput_right:Nx \g_uniza_pending_abbr_tl
+				{
+					\exp_not:N \glsadd
+					{ \tl_use:N \l_tmpa_tl }
+				}
+			}
 	}
 
 \cs_new_protected:Npn \uniza_define_symbol_entry:nnn #1#2#3
@@ -160,7 +165,12 @@ numsep=1em
 		}
 		\bool_if:NTF \g_uniza_glossary_started_bool
 			{ \glsadd{\l_tmpa_tl} }
-			{ \tl_gput_right:Nn \g_uniza_pending_symbol_tl { \glsadd{\l_tmpa_tl} } }
+			{ \tl_gput_right:Nx \g_uniza_pending_symbol_tl
+				{
+					\exp_not:N \glsadd
+					{ \tl_use:N \l_tmpa_tl }
+				}
+			}
 	}
 
 \cs_new_protected:Npn \skratka #1#2#3
@@ -178,6 +188,8 @@ numsep=1em
 	\setglossarystyle{long3col}%
 	\setlength{\glsdescwidth}{0.27\textwidth}%
 	\setlength{\glspagelistwidth}{0.56\textwidth}%
+	\setlength{\extrarowheight}{0pt}%
+	\renewcommand{\arraystretch}{0.8}%
 	\renewcommand*{\glossaryheader}{%
 		\bfseries Skratka &
 		\bfseries Anglický význam &
@@ -194,6 +206,8 @@ numsep=1em
 	\setglossarystyle{long3col}%
 	\setlength{\glsdescwidth}{0.25\textwidth}%
 	\setlength{\glspagelistwidth}{0.58\textwidth}%
+	\setlength{\extrarowheight}{0pt}%
+	\renewcommand{\arraystretch}{0.7}%
 	\renewcommand*{\glossaryheader}{%
 		\bfseries Symbol &
 		\bfseries Jednotka &
