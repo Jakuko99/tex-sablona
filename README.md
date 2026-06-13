@@ -14,6 +14,7 @@ Po stiahnutí najnovšie verzie šablóny z [Releases](https://github.com/jakuko
 \nazovprace{Názov záverečnej práce} % názov záverečnej práce, ktorý sa bude zobrazovat na titulnej strane
 \newcommand{\podnazovprace}{Podnázov záverečnej práce} % v prípade že práca má aj podnázov
 \veduciprace{Meno Školiteľa} % meno školiteľa, které se bude zobrazovat na titulnej strane
+\newcommand{\konzultant}{Titul, meno a priezvisko konzultanta} % ak práca nemá konzultanta, tento riadok nie je potrebný
 \typprace{Bakalárska} % typ záverečnej práce (Bakalárska, Diplomová, Dizertačná)
 \typpracelokal{bakalárskej} % typ záverečnej práce v lokále (bakalárskej, diplomovej, dizertačnej)
 \evidencnecisloprace{12345} % evidenčné číslo záverečnej práce, které se bude zobrazovat na titulnej strane
@@ -28,6 +29,7 @@ Po stiahnutí najnovšie verzie šablóny z [Releases](https://github.com/jakuko
 \abstraktEN{text abstraktu v anglickom jazyku} % text abstraktu v anglickom jazyku
 \klucoveslovaSK{text kľúčových slov} % text kľúčových slov, oddelených čiarkov
 \klucoveslovaEN{text kľúčových slov} % text kľúčových slov, oddelených čiarkov
+\newcommand{\podakovanie}{(Poďakovanie nie je povinná časť záverečnej práce)} % text poďakovania, které se bude zobrazovat na titulnej strane, pokud nie je potrebné, zakomentujte tento riadok
 ```
 
 ## Pridávanie skratiek a symbolov
