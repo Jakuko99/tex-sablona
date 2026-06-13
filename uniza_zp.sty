@@ -11,6 +11,8 @@
 \RequirePackage{tocloft}
 \RequirePackage{tocbasic}
 \RequirePackage{tabularx} % balíček pre tabulky
+\RequirePackage[acronym,automake=delayed]{glossaries}
+\RequirePackage{array}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
 \RequirePackage{amsmath} % balíček pre matematické vzorce
@@ -25,8 +27,8 @@
 \RequirePackage{moreverb}
 \RequirePackage{subcaption}
 \RequirePackage{notoccite} % nezoraďovať citácie podľa obsahu
-\RequirePackage[slovak]{babel}
 \RequirePackage{xparse}
+\RequirePackage[slovak]{babel}
 
 % ----- nastavenie typu písma -----
 \usepackage{helvet} % arial font
@@ -108,6 +110,130 @@ numsep=1em
 
 \graphicspath{{images/}} % priečinok odkiaľ sa načítavajú obrázky
 
+% ----- miesto pre ukladanie skratiek a symbolov -----
+\newglossary[abg]{unizaabbr}{abl}{abx}{Zoznam skratiek}
+\newglossary[syg]{unizasymbol}{syl}{syx}{Zoznam symbolov}
+\makeglossaries
+\ExplSyntaxOn
+\int_new:N \g_uniza_abbr_int
+\int_new:N \g_uniza_symbol_int
+\bool_new:N \g_uniza_glossary_started_bool
+\tl_new:N \g_uniza_pending_abbr_tl
+\tl_new:N \g_uniza_pending_symbol_tl
+
+\AtBeginDocument{
+	\bool_gset_true:N \g_uniza_glossary_started_bool
+}
+
+\cs_new_protected:Npn \uniza_flush_pending_gls:
+	{
+			\tl_use:N \g_uniza_pending_abbr_tl
+			\tl_use:N \g_uniza_pending_symbol_tl
+			\tl_gclear:N \g_uniza_pending_abbr_tl
+			\tl_gclear:N \g_uniza_pending_symbol_tl
+	}
+
+\cs_new_protected:Npn \uniza_define_abbr_entry:nnn #1#2#3
+	{
+		\int_gincr:N \g_uniza_abbr_int
+		\tl_set:Nx \l_tmpa_tl { unizaabbr\int_use:N \g_uniza_abbr_int }
+		\newglossaryentry{\l_tmpa_tl}{%
+			type=unizaabbr,
+			name={#1},
+			description={#2},
+			user1={#3}%
+		}
+		\bool_if:NTF \g_uniza_glossary_started_bool
+			{ \glsadd{\l_tmpa_tl} }
+			{ \tl_gput_right:Nn \g_uniza_pending_abbr_tl { \glsadd{\l_tmpa_tl} } }
+	}
+
+\cs_new_protected:Npn \uniza_define_symbol_entry:nnn #1#2#3
+	{
+		\int_gincr:N \g_uniza_symbol_int
+		\tl_set:Nx \l_tmpa_tl { unizasymbol\int_use:N \g_uniza_symbol_int }
+		\newglossaryentry{\l_tmpa_tl}{%
+			type=unizasymbol,
+			name={#1},
+			description={#2},
+			user1={#3}%
+		}
+		\bool_if:NTF \g_uniza_glossary_started_bool
+			{ \glsadd{\l_tmpa_tl} }
+			{ \tl_gput_right:Nn \g_uniza_pending_symbol_tl { \glsadd{\l_tmpa_tl} } }
+	}
+
+\cs_new_protected:Npn \skratka #1#2#3
+	{
+		\uniza_define_abbr_entry:nnn {#1}{#2}{#3}
+	}
+
+\cs_new_protected:Npn \velicina #1#2#3
+	{
+		\uniza_define_symbol_entry:nnn {#1}{#2}{#3}
+	}
+\ExplSyntaxOff
+
+\newglossarystyle{unizaabbrevthreecol}{%
+	\setglossarystyle{long3col}%
+	\setlength{\glsdescwidth}{0.27\textwidth}%
+	\setlength{\glspagelistwidth}{0.56\textwidth}%
+	\renewcommand*{\glossaryheader}{%
+		\bfseries Skratka &
+		\bfseries Anglický význam &
+		\bfseries Slovenský význam\tabularnewline
+	\endhead}%
+	\renewcommand*{\glossentry}[2]{%
+		\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+		\glossentrydesc{##1} &
+		\glsentryuseri{##1}\tabularnewline
+	}%
+}
+
+\newglossarystyle{unizasymbolthreecol}{%
+	\setglossarystyle{long3col}%
+	\setlength{\glsdescwidth}{0.25\textwidth}%
+	\setlength{\glspagelistwidth}{0.58\textwidth}%
+	\renewcommand*{\glossaryheader}{%
+		\bfseries Symbol &
+		\bfseries Jednotka &
+		\bfseries Význam symbolu\tabularnewline
+	\endhead}%
+	\renewcommand*{\glossentry}[2]{%
+		\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+		\glossentrydesc{##1} &
+		\glsentryuseri{##1}\tabularnewline
+	}%
+}
+
+\newcommand{\zoznamskratiek}{%
+	\printglossary[type=unizaabbr,style=unizaabbrevthreecol]%
+}
+
+\newcommand{\zoznamsymbolov}{%
+	\printglossary[type=unizasymbol,style=unizasymbolthreecol]%
+}
+
+% ----- makrá pre nastavenie premenných -----
+\newcommand{\autorprace}[1]{\newcommand{\menostudenta}{#1}}
+\newcommand{\nazovprace}[1]{\newcommand{\temaprace}{#1}}
+\newcommand{\typprace}[1]{\newcommand{\typpraceint}{#1}}
+\newcommand{\typpracelokal}[1]{\newcommand{\typpracelokalint}{#1}}
+\newcommand{\evidencnecisloprace}[1]{\newcommand{\evidencnecislo}{#1}}
+\newcommand{\fakulta}[1]{\newcommand{\fakultaint}{#1}}
+\newcommand{\studijnyprogram}[1]{\newcommand{\nazovstudijnyprogram}{#1}}
+\newcommand{\studijnyodbor}[1]{\newcommand{\nazovstudijnyodbor}{#1}}
+\newcommand{\rokodovzdania}[1]{\newcommand{\rokodovzdaniaint}{#1}}
+\newcommand{\datumodovzdania}[1]{\newcommand{\datumodovzdaniaint}{#1}}
+\newcommand{\veduciprace}[1]{\newcommand{\veducipraceint}{#1}}
+
+\newcommand{\zadanieprace}[1]{\newcommand{\zadaniepraceint}{#1}}
+\newcommand{\cestnevyhlasenie}[1]{\newcommand{\cestnevyhlasenieint}{#1}}
+\newcommand{\abstraktSK}[1]{\newcommand{\abstraktSKtext}{#1}}
+\newcommand{\abstraktEN}[1]{\newcommand{\abstraktENtext}{#1}}
+\newcommand{\klucoveslovaSK}[1]{\newcommand{\klucoveslova}{#1}}
+\newcommand{\klucoveslovaEN}[1]{\newcommand{\keywords}{#1}}
+
 % ----- spoločný príkaz pre úvodné časti práce -----
 \ExplSyntaxOn
 \NewDocumentCommand{\unizafrontmatter}{}{%
@@ -120,20 +246,20 @@ numsep=1em
 
 \begin{center} %titulná strana
 	\begin{Large}
-		\fakulta \\
+		\fakultaint \\
 
 		\vspace{1.5cm}
-		\nazovprace \\
+		\temaprace \\
 		\vspace{0.5cm}
-		\typprace\ práca \\
+		\typpraceint\ práca \\
 		\vspace{2.5cm}
 		\textbf{\menostudenta} \\
 		\vfill
 	\end{Large}
 \end{center}
-Vedúci\ \typpracelokal\ práce:\ \veduciprace \\
+Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
 Evidenčné\ číslo:\ \evidencnecislo \\
-\mesto\ \rokodovzdania \\
+Žilina\ \rokodovzdaniaint \\
 
 \newpage
 \thispagestyle{empty} % skryť číslovanie strany
@@ -145,10 +271,10 @@ Evidenčné\ číslo:\ \evidencnecislo \\
 
 \begin{center} %titulná strana
 	\begin{Large}
-		\fakulta \\
+		\fakultaint \\
 
 		\vspace{2cm}
-		\nazovprace \\
+		\temaprace \\
 		\vspace{0.5cm}
 		\makeatletter
 		\@ifundefined{podnazovprace}{}{%
@@ -158,7 +284,7 @@ Evidenčné\ číslo:\ \evidencnecislo \\
 		}
 		\makeatother
 		\vspace{0.75cm}
-		\typprace\ práca \\
+		\typpraceint\ práca \\
 		\vspace{3cm}
 		\textbf{\menostudenta} \\
 		\vfill
@@ -166,8 +292,8 @@ Evidenčné\ číslo:\ \evidencnecislo \\
 \end{center}
 Študijný\ program:\ \nazovstudijnyprogram \\
 Študijný\ odbor:\ \nazovstudijnyodbor \\
-Školiace\ pracovisko:\ \skoliacepracovisko \\
-Vedúci\ \typpracelokal\ práce:\ \veduciprace \\
+Školiace\ pracovisko:\ Žilinská\ univerzita\ v\ Žiline \\
+Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
 \makeatletter
 \@ifundefined{konzultant}{}{%
 	\if\relax\detokenize{\konzultant}\relax\else
@@ -175,9 +301,54 @@ Konzultant:\ \konzultant \\
 	\fi
 }
 \makeatother
-\mesto\ \rokodovzdania \\
+Žilina\ \rokodovzdaniaint \\
+% ----- konniec titulných strán -----
 
-	\input{uvodne_strany}%
+	\newpage % strana pre zadanie
+	\thispagestyle{empty}
+	\begingroup
+	\includepdf{\zadaniepraceint} % vloženie zadania záverečnej práce z PDF súboru
+	\endgroup
+
+	\newpage % čestné vyhlásenie
+	\pagestyle{fancy}
+	\pagenumbering{Roman}
+	\mbox{}
+	\vfill
+	\section*{Čestné vyhlásenie}
+	\cestnevyhlasenieint
+	\vspace*{0.25cm}
+	\\Žilina\ \datumodovzdaniaint
+
+	\vspace*{.5cm}
+	\null\hfill podpis
+
+	\makeatletter
+		\@ifundefined{podakovanie}{}{%
+			\if\relax\detokenize{\podakovanie}\relax\else
+				\newpage % poďakovanie
+				\mbox{}
+				\vfill
+				\section*{Poďakovanie}	
+				\podakovanie \\
+				\vspace{3cm}
+			\fi
+		}
+		\makeatother
+
+	\newpage % abstrakt
+	\section*{Abstrakt}
+	\abstraktSKtext
+
+	\vspace{0.5cm}
+	\\ \noindent\textbf{Kľúčové\ slová:\ } \klucoveslova \\
+
+	\section*{Abstract}
+	\abstraktENtext
+
+	\vspace{0.5cm}
+	\\ \noindent\textbf{Keywords:\ } \keywords \\
+
 
 	\newpage
 	\tableofcontents
@@ -186,7 +357,13 @@ Konzultant:\ \konzultant \\
 	\newpage
 	\listoftables
 
-	\input{skratky_symboly}%
+	\newpage % zoznam skratiek a symbolov
+	\uniza_flush_pending_gls:
+	% \section*{Zoznam\ skratiek}
+	\zoznamskratiek
+
+	% \section*{Zoznam\ symbolov}
+	\zoznamsymbolov
 
 	\newpage
 	\pagestyle{fancy}

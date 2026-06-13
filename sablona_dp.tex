@@ -1,25 +1,29 @@
-% (c) 2023 Ing. Jakub Krško, FEIT, UNIZA
-% https://github.com/jakuko99/tex-sablona/issues
-
 \documentclass[12]{article}
 \usepackage{uniza_zp} % balíček pre záverečné práce na UNIZA
 
 % ----- nastavenie názvu práce, študijného programu, odboru, vedúceho práce a konzultanta -----
-\newcommand{\menostudenta}{Meno priezvisko} % meno a priezvisko študenta
-\newcommand{\nazovprace}{Názov záverečnej práce}
+\autorprace{Meno Priezvisko} % meno a priezvisko študenta
+\nazovprace{Názov záverečnej práce}
 % \newcommand{\podnazovprace}{Podnázov záverečnej práce} % ak práca nemá podnázov, tento riadok vymažte
-\newcommand{\typprace}{Diplomová} % typ práce - Bakalárska alebo Diplomová
-\newcommand{\typpracelokal}{diplomovej} % typ práce v lokále - bakalárskej alebo diplomovej
-\newcommand{\evidencnecislo}{Evidenčné číslo práce}
-\newcommand{\fakulta}{Fakulta elektrotechniky a informačných technológií} % názov fakulty
-\newcommand{\nazovstudijnyprogram}{Názov študijného programu}
-\newcommand{\nazovstudijnyodbor}{Názov študijného odboru}
-\newcommand{\rokodovzdania}{2026} % rok odovzdania záverečnej práce
-\newcommand{\datumodovzdania}{3. apríla} % dátum odovzdania záverečnej práce
-\newcommand{\skoliacepracovisko}{Žilinská univerzita v Žiline}
-\newcommand{\mesto}{Žilina}
-\newcommand{\veduciprace}{Titul, meno a priezvisko vedúceho práce}
+\veduciprace{Titul, meno a priezvisko vedúceho práce}
 % \newcommand{\konzultant}{Titul, meno a priezvisko konzultanta} % ak práca nemá konzultanta, tento riadok vymažte
+\typprace{Diplomová} % typ práce - Bakalárska alebo Diplomová
+\typpracelokal{diplomovej} % typ práce v lokále - bakalárskej alebo diplomovej
+\evidencnecisloprace{Evidenčné číslo práce}
+\fakulta{Fakulta elektrotechniky a informačných technológií} % názov fakulty
+\studijnyprogram{Názov študijného programu}
+\studijnyodbor{Názov študijného odboru}
+\rokodovzdania{2026} % rok odovzdania záverečnej práce
+\datumodovzdania{3. apríla 2026} % dátum odovzdania záverečnej práce
+\zadanieprace{zadanie.jpg} % cesta k súboru so zadaním záverečnej práce
+
+\cestnevyhlasenie{Vyhlasujem, že som zadanú diplomovú prácu vypracoval samostatne, pod \nobreak odborným vedením vedúceho práce a používal som len literatúru uvedenú v práci.}
+% \newcommand{\podakovanie}{(Poďakovanie nie je povinná časť záverečnej práce)}
+\abstraktSK{Text abstraktu v slovenčine ide sem.}
+\abstraktEN{Text of the abstract in English goes here.}
+
+\klucoveslovaSK{slovo1, slovo2, slovo3, slovo4} % kľúčové slová v slovenčine
+\klucoveslovaEN{keyword1, keyword2, keyword3, keyword4} % keywords in English
 
 \begin{document}
 \unizafrontmatter % vloženie úvodných strán - titulná strana, zadanie, čestné vyhlásenie, poďakovanie, abstrakt
@@ -28,11 +32,11 @@
 % obsahová časť práce začínajúca od úvodu, číslovanie strán od 1
 \addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
 \section*{Úvod} % sekcia bez čísla
-Text úvodu ide sem.
+Text úvodu ide sem. \skratka{etc.}{et cetera}{a tak ďalej}
 
 \newpage
 \section{Úvod do problematiky}
-Príklad obrázku:
+Príklad obrázku: \velicina{U}{Volt (V)}{elektrické napätie}
 
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
 \centering
@@ -65,6 +69,7 @@ Príklad tabuľky:
 \addcontentsline{toc}{section}{Záver}
 \section*{Záver}
 Text záveru
+\skratka{sms}{af}{textová správa}
 
 \unizabackmatter{sablona_dp} % vloženie záverečných strán - zoznam literatúry, zoznam príloh
 
