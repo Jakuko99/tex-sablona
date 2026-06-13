@@ -98,15 +98,15 @@ numsep=1em
 }
 
 % ----- vytvorenie zoznamu pre prílohy -----
-\newcommand{\listexamplename}{\Large Zoznam príloh}
-\newlistof{example}{exp}{\listexamplename}
-\newcounter{examplealph}
-\newcommand{\example}[1]{%
-	\refstepcounter{examplealph}
-	\par\noindent\section*{Príloha \Alph{examplealph}: #1}
-	\addcontentsline{exp}{example}
-	{\textbf{Príloha \protect\numberline{\Alph{examplealph}}}#1}\par}
-\renewcommand{\theexamplealph}{\Alph{examplealph}}
+\newcommand{\listprilohaname}{\Large Zoznam príloh}
+\newlistof{priloha}{exp}{\listprilohaname}
+\newcounter{prilohaalph}
+\newcommand{\priloha}[1]{%
+	\refstepcounter{prilohaalph}
+	\par\noindent\section*{Príloha \Alph{prilohaalph}: #1}
+	\addcontentsline{exp}{priloha}
+	{\textbf{Príloha \protect\numberline{\Alph{prilohaalph}}}#1}\par}
+\renewcommand{\theprilohaalph}{\Alph{prilohaalph}}
 
 \graphicspath{{images/}} % priečinok odkiaľ sa načítavajú obrázky
 
@@ -386,6 +386,6 @@ Konzultant:\ \konzultant \\
 \vspace*{\fill}
 
 \newpage % zoznam príloh
-\listofexample
+\listofpriloha
 }
 \ExplSyntaxOff
