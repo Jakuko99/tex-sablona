@@ -80,4 +80,6 @@ Text záveru
 
 \newpage
 \priloha{Príklad prílohy} % prvá príloha práce
+
+\end{document}
 ```
