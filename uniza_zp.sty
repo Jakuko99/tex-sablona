@@ -252,70 +252,70 @@ numsep=1em
 \ExplSyntaxOn
 \NewDocumentCommand{\unizafrontmatter}{}{%
 	\thispagestyle{empty} % skryť číslovanie strany
-\pagenumbering{gobble} % vypnutie číslovania strán, obálka práce
-\begin{figure}[H] %logo univerzity
-	\centering
-	\includegraphics[width=\linewidth]{logo.jpg}
-\end{figure}
+    \pagenumbering{gobble} % vypnutie číslovania strán, obálka práce
+    \begin{figure}[H] %logo univerzity
+    	\centering
+    	\includegraphics[width=\linewidth]{logo.jpg}
+    \end{figure}
 
-\begin{center} %titulná strana
-	\begin{Large}
-		\fakultaint \\
+    \begin{center} %titulná strana
+    	\begin{Large}
+		      \fakultaint \\
+		      \vspace{1.5cm}   
+		      \temaprace \\
+		      \vspace{0.5cm}
+		      \typpraceint\ práca \\
+		      \vspace{2.5cm}
+		      \textbf{\menostudenta} \\
+		      \vfill
+	    \end{Large}
+    \end{center}
+    
+    Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
+    Evidenčné\ číslo:\ \evidencnecislo \\
+    Žilina\ \rokodovzdaniaint \\
 
-		\vspace{1.5cm}
-		\temaprace \\
-		\vspace{0.5cm}
-		\typpraceint\ práca \\
-		\vspace{2.5cm}
-		\textbf{\menostudenta} \\
-		\vfill
-	\end{Large}
-\end{center}
-Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
-Evidenčné\ číslo:\ \evidencnecislo \\
-Žilina\ \rokodovzdaniaint \\
+    \newpage
+    \thispagestyle{empty} % skryť číslovanie strany
+    \pagenumbering{gobble} % vypnutie číslovania strán
+    \begin{figure}[H] %logo univerzity
+	   \centering
+	   \includegraphics[width=\linewidth]{logo.jpg}
+    \end{figure}
 
-\newpage
-\thispagestyle{empty} % skryť číslovanie strany
-\pagenumbering{gobble} % vypnutie číslovania strán
-\begin{figure}[H] %logo univerzity
-	\centering
-	\includegraphics[width=\linewidth]{logo.jpg}
-\end{figure}
-
-\begin{center} %titulná strana
-	\begin{Large}
-		\fakultaint \\
-
-		\vspace{2cm}
-		\temaprace \\
-		\vspace{0.5cm}
-		\makeatletter
-		\@ifundefined{podnazovprace}{}{%
-			\if\relax\detokenize{\podnazovprace}\relax\else
-				\podnazovprace \\
-			\fi
-		}
-		\makeatother
-		\vspace{0.75cm}
-		\typpraceint\ práca \\
-		\vspace{3cm}
-		\textbf{\menostudenta} \\
-		\vfill
-	\end{Large}
-\end{center}
-Študijný\ program:\ \nazovstudijnyprogram \\
-Študijný\ odbor:\ \nazovstudijnyodbor \\
-Školiace\ pracovisko:\ Žilinská\ univerzita\ v\ Žiline \\
-Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
-\makeatletter
-\@ifundefined{konzultant}{}{%
-	\if\relax\detokenize{\konzultant}\relax\else
-Konzultant:\ \konzultant \\
-	\fi
-}
-\makeatother
-Žilina\ \rokodovzdaniaint \\
+    \begin{center} %titulná strana
+	   \begin{Large}
+    		\fakultaint \\
+		      \vspace{2cm}
+		      \temaprace \\
+		      \vspace{0.5cm}
+		      \makeatletter
+		    \@ifundefined{podnazovprace}{}{%
+			     \if\relax\detokenize{\podnazovprace}\relax\else
+				    \podnazovprace \\
+			     \fi
+		      }
+		      \makeatother
+		      \vspace{0.75cm}
+		      \typpraceint\ práca \\
+		      \vspace{3cm}
+		      \textbf{\menostudenta} \\
+		      \vfill
+	    \end{Large}
+    \end{center}
+    
+    Študijný\ program:\ \nazovstudijnyprogram \\
+    Študijný\ odbor:\ \nazovstudijnyodbor \\
+    Školiace\ pracovisko:\ Žilinská\ univerzita\ v\ Žiline \\
+    Vedúci\ \typpracelokalint\ práce:\ \veducipraceint \\
+    \makeatletter
+    \@ifundefined{konzultant}{}{%
+    	\if\relax\detokenize{\konzultant}\relax\else
+        Konzultant:\ \konzultant \\
+	    \fi
+    }
+    \makeatother
+    Žilina\ \rokodovzdaniaint \\
 % ----- konniec titulných strán -----
 
 	\newpage % strana pre zadanie
@@ -388,18 +388,18 @@ Konzultant:\ \konzultant \\
 
 \ExplSyntaxOn
 \NewDocumentCommand{\unizabackmatter}{m}{%
-\newpage % zoznam použitej literatúry
-\addcontentsline{toc}{section}{Zoznam použitej literatúry}
-\bibliographystyle{ieeetr}
-\bibliography{#1}
+    \newpage % zoznam použitej literatúry
+    \addcontentsline{toc}{section}{Zoznam\ použitej\ literatúry}
+    \bibliographystyle{ieeetr}
+    \bibliography{#1}
 
-\newpage % začiatok príloh
-\vspace*{\fill}
-\addcontentsline{toc}{section}{Prílohy}
-\begin{center} \section*{Prílohy} \end{center}
-\vspace*{\fill}
+    \newpage % začiatok príloh
+    \vspace*{\fill}
+    \addcontentsline{toc}{section}{Prílohy}
+    \begin{center} \section*{Prílohy} \end{center}
+    \vspace*{\fill}
 
-\newpage % zoznam príloh
-\listofpriloha
+    \newpage % zoznam príloh
+    \listofpriloha
 }
 \ExplSyntaxOff
