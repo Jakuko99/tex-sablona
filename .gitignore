@@ -47,6 +47,8 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+# pdf files are not needed, since they come from source files
+*.pdf
 
 ## Build tool directories for auxiliary files
 # latexrun
