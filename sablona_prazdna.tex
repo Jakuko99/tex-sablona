@@ -28,57 +28,21 @@
 \begin{document}
 \unizafrontmatter % vloženie úvodných strán - titulná strana, zadanie, čestné vyhlásenie, poďakovanie, abstrakt
 
-% ----- obsah práce začína tu -----
 % obsahová časť práce začínajúca od úvodu, číslovanie strán od 1
 \addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
 \section*{Úvod} % sekcia bez čísla
-Text úvodu ide sem. 
+Text úvodu
 
-\skratka{UPS}{Uninterruptible Power Supply}{záložný zdroj energie}
-prvé použitie skratky \skr{UPS} a druhé použitie \skr{UPS}.
- 
-\newpage
-\section{Úvod do problematiky}
-Príklad obrázku: \velicina{U}{Volt (V)}{elektrické napätie}
-
-\begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
-\centering
-\includegraphics{logo.jpg}
-\caption{obrázok}
-\label{img:obrazok}
-\end{figure}
-
-\subsection{podkapitola}
-
-Podkapitola v dokumente, citovanie vyzerá takto \cite{modernrob}, odkázanie sa na obrázok \ref{img:obrazok}
-
-\subsubsection{Pod-podkapitola}
-Príklad tabuľky:
-
-\begin{table}[H]
-	\centering
-	\caption{tabulka}
-	\label{tab:my-table}
-	\begin{tabular}{|l|l|}
-		\hline
-		1 & 3 \\ \hline
-		4 & 2 \\ \hline
-	\end{tabular}
-\end{table}
-
-\section{Kapitola 2}
+% obsah práce
 
 \newpage % záver
 \addcontentsline{toc}{section}{Záver}
 \section*{Záver}
 Text záveru
-\skratka{etc.}{et cetera}{a tak ďalej}
 
 \unizabackmatter{sablona_zp} % vloženie záverečných strán - zoznam literatúry, zoznam príloh
 
 \newpage
-\priloha{Príklad prílohy}
-
-\input{priloha_2} % vloženie prílohy z iného súboru
+\priloha{Príloha 1}
 
 \end{document}

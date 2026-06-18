@@ -37,7 +37,9 @@ Po stiahnutí najnovšie verzie šablóny z [Releases](https://github.com/jakuko
 ## Pridávanie skratiek a symbolov
 Skratky a symboly sa v tejto šablóne definujú pomocou príkazov `\skratka` a `\velicina`, ktoré je možné použiť kdekoľvek v texte. Príklad použitia:
 ```latex
-\skratka{ML}{machine learning}{strojové učenie} % definícia skratky ML, ktorá se bude zobrazovat v zozname skratiek
+\skratka{ML}{Machine Learning}{strojové učenie} % definícia skratky ML, ktorá se bude zobrazovat v zozname skratiek
+\skr[sk]{ML} % pri prvom použití vráti ML (strojové učenie), pri každom ďalšom už len ML
+\skr[en]{ML} % pri prvom použití vráti ML (Machine Learning), pri každom ďalšom už len ML, agrument [en] v tomto prípade nie je potrebný, keďže to je predvolená hodnota
 \velicina{c}{km/s (kilometre za sekundu)}{rýchlosť svetla} % definícia veličiny c, která se bude zobrazovat v zozname symbolov
 ```
 V tomto prípade nebolo možné príkaz pre pridádanie symbolov pomenovať `\symbol`, keďže latex obsahuje vstavaný príkaz z daným názvom.

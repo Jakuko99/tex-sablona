@@ -134,24 +134,32 @@ numsep=1em
 	}
 
 \cs_new_protected:Npn \uniza_define_abbr_entry:nnn #1#2#3
-	{
-		\int_gincr:N \g_uniza_abbr_int
-		\tl_set:Nx \l_tmpa_tl { unizaabbr\int_use:N \g_uniza_abbr_int }
-		\newglossaryentry{\l_tmpa_tl}{%
-			type=unizaabbr,
-			name={#1},
-			description={#2},
-			user1={#3}%
-		}
-		\bool_if:NTF \g_uniza_glossary_started_bool
-			{ \glsadd{\l_tmpa_tl} }
-			{ \tl_gput_right:Nx \g_uniza_pending_abbr_tl
-				{
-					\exp_not:N \glsadd
-					{ \tl_use:N \l_tmpa_tl }
-				}
-			}
-	}
+{
+    \int_gincr:N \g_uniza_abbr_int
+
+    \tl_set:Nx \l_tmpa_tl
+      { unizaabbr\int_use:N \g_uniza_abbr_int }
+
+    \newglossaryentry{\l_tmpa_tl}{
+        type=unizaabbr,
+        name={#1},
+        description={#2},
+        user1={#3}
+    }
+
+    % abbreviation -> internal label mapping
+    \cs_gset:cpn { unizaabbr_lookup_#1 } { \l_tmpa_tl }
+
+    \bool_if:NTF \g_uniza_glossary_started_bool
+        { \glsadd{\l_tmpa_tl} }
+        {
+            \tl_gput_right:Nx \g_uniza_pending_abbr_tl
+            {
+                \exp_not:N \glsadd
+                { \tl_use:N \l_tmpa_tl }
+            }
+        }
+}
 
 \cs_new_protected:Npn \uniza_define_symbol_entry:nnn #1#2#3
 	{
@@ -182,6 +190,55 @@ numsep=1em
 	{
 		\uniza_define_symbol_entry:nnn {#1}{#2}{#3}
 	}
+\ExplSyntaxOff
+
+\ExplSyntaxOn
+
+% Error message
+\msg_new:nnn {uniza} {unknown-abbreviation}
+{
+  Abbreviation~'#1'~has~not~been~defined.\MessageBreak
+  Define~it~first~using:\MessageBreak
+  \string\skratka\{#1\}\{English~meaning\}\{Slovak~meaning\}
+}
+
+% Internal printer
+\cs_new_protected:Npn \uniza_skr_print:nn #1#2
+{
+  \cs_if_exist:cTF { unizaabbr_seen_#1 }
+  {
+    % Already used
+    \glsentryname{\use:c { unizaabbr_lookup_#1 }}
+  }
+  {
+    % First use
+    \cs_gset:cpn { unizaabbr_seen_#1 } { 1 }
+
+    \str_if_eq:nnTF {#2} {sk}
+    {
+      \glsentryname{\use:c { unizaabbr_lookup_#1 }}
+	  \c_space_tl
+      ~(\glsentryuseri{\use:c { unizaabbr_lookup_#1 }})
+    }
+    {
+      \glsentryname{\use:c { unizaabbr_lookup_#1 }}
+	  \c_space_tl
+      ~(\glossentrydesc{\use:c { unizaabbr_lookup_#1 }})
+    }
+  }
+}
+
+% Public command
+\NewDocumentCommand{\skr}{ O{en} m }
+{
+  \cs_if_exist:cTF { unizaabbr_lookup_#2 }
+  {
+    \uniza_skr_print:nn {#2} {#1}
+  }
+  {
+    \msg_error:nnn {uniza} {unknown-abbreviation} {#2}
+  }
+}
 \ExplSyntaxOff
 
 \newglossarystyle{unizaabbrevthreecol}{%
