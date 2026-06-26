@@ -2,7 +2,7 @@
 > [!WARNING]
 > Aktuálna verzia šablóny nefunguje správne v Overleaf editore, keďže ten má problém s generovaním zoznamu skratiek a symbolov
 
-Šablóna je určená pre písanie záverečných prác (bakalrských, diplomových, dizertačných) s použitím [LaTex-u](https://www.latex-project.org/). Jej cieľom je poskytnúť študentom jednoduchý a efektívny nástroj na tvorbu kvalitných záverečných prác, ktoré spĺňajú požiadavky akademických inštitúcií. Pre správne fungovanie šablóny je potrebné mať nainštalovaný LaTex-ový systém (napr. [TeX Live](https://tug.org/texlive/), [MiKTeX](https://miktex.org/download)), editor (napr. [TeXstudio](https://texstudio.org/#download), [Overleaf](https://www.overleaf.com/), [TeXworks](https://tug.org/texworks/)) a [Perl](https://www.perl.org/get.html).
+Šablóna je určená pre písanie záverečných prác (bakalrských, diplomových, dizertačných) s použitím [LaTex-u](https://www.latex-project.org/). Jej cieľom je poskytnúť študentom jednoduchý a efektívny nástroj na tvorbu kvalitných záverečných prác, ktoré spĺňajú požiadavky akademických inštitúcií. Pre správne fungovanie šablóny je potrebné mať nainštalovaný LaTex-ový systém (napr. [TeX Live](https://tug.org/texlive/), [MiKTeX](https://miktex.org/download)), editor (napr. [TeXstudio](https://texstudio.org/#download), [TeXworks](https://tug.org/texworks/)) a [Perl](https://www.perl.org/get.html), alebo je možné použiť online editor [Overleaf](https://www.overleaf.com/), kde avšak nemusí šablóna správne fungovať.
 
 Kompilácia dokumentu sa vykonáva pomocou `latexmk`, ktorý automaticky spravuje závislosti a zabezpečuje správne generovanie všetkých potrebných súborov. Na kompiláciu dokumentu použite príkaz:
 ```bash
