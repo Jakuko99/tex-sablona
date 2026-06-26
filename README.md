@@ -2,7 +2,7 @@
 > [!WARNING]
 > Aktuálna verzia šablóny nefunguje správne v Overleaf editore, keďže ten má problém s generovaním zoznamu skratiek a symbolov
 
-Šablóna je určená pre písanie záverečných prác (bakalrských, diplomových, dizertačných) s použitím LaTexu. Jej cieľom je poskytnúť študentom jednoduchý a efektívny nástroj na tvorbu kvalitných záverečných prác, ktoré spĺňajú požiadavky akademických inštitúcií. Pre správne fungovanie šablóny je potrebné mať nainštalovaný LaTexový distribučný systém (napr. TeX Live, MiKTeX) a editor (napr. TeXstudio, Overleaf) a Perl.
+Šablóna je určená pre písanie záverečných prác (bakalrských, diplomových, dizertačných) s použitím [LaTex-u](https://www.latex-project.org/). Jej cieľom je poskytnúť študentom jednoduchý a efektívny nástroj na tvorbu kvalitných záverečných prác, ktoré spĺňajú požiadavky akademických inštitúcií. Pre správne fungovanie šablóny je potrebné mať nainštalovaný LaTex-ový systém (napr. [TeX Live](https://tug.org/texlive/), [MiKTeX](https://miktex.org/download)), editor (napr. [TeXstudio](https://texstudio.org/#download), [Overleaf](https://www.overleaf.com/), [TeXworks](https://tug.org/texworks/)) a [Perl](https://www.perl.org/get.html).
 
 Kompilácia dokumentu sa vykonáva pomocou `latexmk`, ktorý automaticky spravuje závislosti a zabezpečuje správne generovanie všetkých potrebných súborov. Na kompiláciu dokumentu použite príkaz:
 ```bash
@@ -21,8 +21,8 @@ Po stiahnutí najnovšie verzie šablóny z [Releases](https://github.com/jakuko
 \typpracelokal{bakalárskej} % typ záverečnej práce v lokále (bakalárskej, diplomovej, dizertačnej)
 \evidencnecisloprace{12345} % evidenčné číslo záverečnej práce, které se bude zobrazovat na titulnej strane
 \fakulta{Fakulta elektrotechniky a informatiky} % názov fakulty, ktorý se bude zobrazovat na titulnej strane
-\studijnyprogram{Informatika} % názov študijného programu, ktorý se bude zobrazovat na titulnej strane
-\studijnyodbor{Informatika} % názov študijného odboru, ktorý se bude zobrazovat na titulnej strane
+\studijnyprogram{Kybernetika} % názov študijného programu, ktorý se bude zobrazovat na titulnej strane
+\studijnyodbor{Riadenie procesov} % názov študijného odboru, ktorý se bude zobrazovat na titulnej strane
 \rokodovzdania{2024} % rok odovzdania záverečnej práce, ktorý se bude zobrazovat na titulnej strane
 \datumodovzdania{1.6.2024} % datum odovzdania, ktorý sa zobrazí v čestnom vyhlásení
 \zadanieprace{subor.jpg} % sken zadania záverečej práce
