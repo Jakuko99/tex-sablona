@@ -20,11 +20,11 @@
 
 \cestnevyhlasenie{Vyhlasujem, že som zadanú diplomovú prácu vypracoval samostatne, pod \nobreak odborným vedením vedúceho práce a používal som len literatúru uvedenú v práci.}
 \newcommand{\podakovanie}{(Poďakovanie nie je povinná časť záverečnej práce)}
-\abstraktSK{Text abstraktu v slovenčine ide sem.}
-\abstraktEN{Text of the abstract in English goes here.}
+\abstraktSK{Abstrakt býva spravidla informatívny a zachováva tematické a štýlové vlastnosti primárneho dokumentu. Podľa možnosti obsahuje kvalitatívnu a kvantitatívnu informáciu obsiahnutú v dokumente. Abstrakt sa píše súvisle ako jeden odsek a jeho rozsah je spravidla 100 až 500 slov. Súčasťou abstraktu je 3 až 5 kľúčových slov, neobsahuje citácie literatúry (Metodické usmernenie 14/2009-R, 2009; Katuščák, 2004).}
+\abstraktEN{In this place, insert text of the abstract including keywords in English or another foreign language. Sem vložte text abstraktu vrátane kľúčových slov v angličtine, prípadne v inom zvolenom cudzom jazyku. Ide o preklad vyššie uvedeného slovenského abstraktu.}
 
-\klucoveslovaSK{slovo1, slovo2, slovo3, slovo4} % kľúčové slová v slovenčine
-\klucoveslovaEN{keyword1, keyword2, keyword3, keyword4} % keywords in English
+\klucoveslovaSK{uveďte min. 4 kľúčové slová, napr. robotika, manipulácia, dopravník} % kľúčové slová v slovenčine
+\klucoveslovaEN{Insert a minimum of 4 keywords that accurately characterize your topic.} % keywords in English
 
 \begin{document}
 \unizafrontmatter % vloženie úvodných strán - titulná strana, zadanie, čestné vyhlásenie, poďakovanie, abstrakt
@@ -33,15 +33,25 @@
 % obsahová časť práce začínajúca od úvodu, číslovanie strán od 1
 \addcontentsline{toc}{section}{Úvod} % pridanie nečíslovaných kapitol do obsahu
 \section*{Úvod} % sekcia bez čísla
-Text úvodu ide sem. 
+V úvode autor stručne a výstižne charakterizuje stav poznania alebo praxe v oblasti, ktorá je predmetom záverečnej práce a oboznamuje čitateľa s významom, cieľmi a zámermi práce. Autor v úvode zdôrazňuje, prečo je práca dôležitá a prečo sa rozhodol spracovať danú tému.
 
-\skratka{UPS}{Uninterruptible Power Supply}{záložný zdroj energie}
-prvé použitie skratky \skr{UPS} a druhé použitie \skr{UPS}.
- 
+\textbf{TODO:} Pridať možnosť na vytvorenie zoznamu pojmov
+
 \newpage
-\section{Úvod do problematiky}
-Príklad obrázku: \velicina{U}{Volt (V)}{elektrické napätie}
+\section{Zásady vypracovania ZP}
+Záverečná práca sa vypracúva spravidla v štátnom jazyku, v prvej osobe množného čísla v minulom čase. So súhlasom dekana fakulty môže byť záverečná práca napísaná a obhajovaná aj v inom ako štátnom jazyku.
 
+\textbf{Odporúčaný rozsah} bakalárskej práce je 30 až 40 strán (54 000 až 72 000 znakov vrátane medzier), diplomovej práce 50 až 70 strán (90 000 až 126 000 znakov), dizertačnej práce 80 až 120 strán (144 000 až 216 000 znakov) a habilitačnej práce do 150 strán.
+
+V prípade, že súčasťou záverečnej práce je \textbf{funkčná vzorka, počítačová aplikácia, počítačový model alebo iný typ prakticky použiteľného výstupu, povinnou súčasťou} záverečnej práce \textbf{je návod na obsluhu a v prípade počítačových aplikácií aj návod na inštaláciu programu.} Odporúčame návod na inštaláciu softvéru a návod na obsluhu vložiť do prílohy záverečnej práce.
+
+Záverečná práca obsahuje minimálne 1 prílohu, ktorou je CD, na ktorom sa nachádza text záverečnej práce a podľa potreby ďalšie vyššie spomenuté časti (návod na obsluhu, návod na inštaláciu programu, prezentácia k obhajobe, video dokumentujúce činnosť funkčnej vzorky, programu a pod.).    
+
+\subsection{Používanie LaTex-ovej šablóny}
+
+\subsubsection{Tvorba štruktúry dokumentu}
+
+\subsubsection{Vkladanie obrázkov}
 \begin{figure}[H] % H - zobrazenie kde sa nachádza v tex súbore
 \centering
 \includegraphics{logo.jpg}
@@ -49,11 +59,7 @@ Príklad obrázku: \velicina{U}{Volt (V)}{elektrické napätie}
 \label{img:obrazok}
 \end{figure}
 
-\subsection{podkapitola}
-
-Podkapitola v dokumente, citovanie vyzerá takto \cite{modernrob}, odkázanie sa na obrázok \ref{img:obrazok}
-
-\subsubsection{Pod-podkapitola}
+\subsubsection{Vkladanie tabuliek}
 Príklad tabuľky:
 
 \begin{table}[H]
@@ -67,7 +73,8 @@ Príklad tabuľky:
 	\end{tabular}
 \end{table}
 
-\section{Kapitola 2}
+\subsubsection{Citovanie literatúry}
+Citovanie vyzerá takto \cite{modernrob}, odkázanie sa na obrázok \ref{img:obrazok}
 
 \newpage % záver
 \addcontentsline{toc}{section}{Záver}
