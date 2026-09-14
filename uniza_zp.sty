@@ -148,7 +148,8 @@ numsep=1em
     }
 
     % abbreviation -> internal label mapping
-    \cs_gset:cpn { unizaabbr_lookup_#1 } { \l_tmpa_tl }
+    \cs_gset:cpx { unizaabbr_lookup_#1 }
+      { \tl_use:N \l_tmpa_tl }
 
     \bool_if:NTF \g_uniza_glossary_started_bool
         { \glsadd{\l_tmpa_tl} }
